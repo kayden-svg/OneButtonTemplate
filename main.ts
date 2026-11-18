@@ -1,15 +1,10 @@
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Ready) {
-        mySprite.y += -25
-    }
-})
-controller.A.onEvent(ControllerButtonEvent.Released, function () {
-    if (Ready) {
-        mySprite.y += 25
+        man1.vy = -115
     }
 })
 let projectile: Sprite = null
-let mySprite: Sprite = null
+let man1: Sprite = null
 let Ready = false
 Ready = false
 game.showLongText("Make a One Button Game", DialogLayout.Full)
@@ -137,7 +132,7 @@ scene.setBackgroundImage(img`
     2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
     2222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
     `)
-mySprite = sprites.create(img`
+man1 = sprites.create(img`
     . . . . 2 2 2 2 2 e . . . . . . 
     . . . 2 2 2 2 d 2 2 e . . . . . 
     . . e 2 2 2 2 2 2 2 e . . . . . 
@@ -156,9 +151,9 @@ mySprite = sprites.create(img`
     . . e e e e f f f . . . . . . . 
     `, SpriteKind.Player)
 Ready = false
-mySprite.setPosition(46, 79)
+man1.setPosition(46, 79)
 animation.runImageAnimation(
-mySprite,
+man1,
 [img`
     . . . . 2 2 2 2 2 e . . . . . . 
     . . . 2 2 2 2 d 2 2 e . . . . . 
@@ -231,27 +226,28 @@ mySprite,
 200,
 true
 )
+man1.ay = 150
 Ready = true
 game.onUpdateInterval(2000, function () {
     if (true) {
         projectile = sprites.createProjectileFromSide(img`
-            . . . . . c c b b b . . . . . . 
-            . . . . c b d d d d b . . . . . 
-            . . . . c d d d d d d b b . . . 
-            . . . . c d d d d d d d d b . . 
-            . . . c b b d d d d d d d b . . 
-            . . . c b b d d d d d d d b . . 
-            . c c c c b b b b d d d b b b . 
-            . c d d b c b b b b b b b b d b 
-            c b b d d d b b b b b d d b d b 
-            c c b b d d d d d d d b b b d c 
-            c b c c c b b b b b b b d d c c 
-            c c b b c c c c b d d d b c c b 
-            . c c c c c c c c c c c b b b b 
-            . . c c c c c b b b b b b b c . 
-            . . . . . . c c b b b b c c . . 
-            . . . . . . . . c c c c . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . d d d . . . . . . . . . . . . 
+            . d d d d d d d . . . . . . . . 
+            . d b . d d d d d d d d . . . . 
+            . d b . . . . d d d d d d d d . 
+            . d b . . . . . . . . d d d d . 
+            . d b . . . . . . . . . . d d . 
+            . d b . . . . . . . . . . d d . 
+            d d b b . . . . . . . . . d d . 
+            d d b b . . . . . . . . . d d . 
+            d d d d d . . . . . . . . d d . 
+            . . . . . . . . . . . . d d d b 
+            . . . . . . . . . . . . d d d b 
+            . . . . . . . . . . . d d d d d 
             `, -50, 0)
-        projectile.setPosition(160, 79)
+        projectile.setPosition(160, 100)
     }
 })

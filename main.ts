@@ -3,9 +3,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         man1.vy = -175
     }
 })
-sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
-    info.changeLifeBy(-1)
-})
 let myEnemy: Sprite = null
 let man1: Sprite = null
 let Ready = false
